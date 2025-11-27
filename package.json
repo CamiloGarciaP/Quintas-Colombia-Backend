@@ -20,10 +20,13 @@
   },
   "license": "ISC",
   "author": "Hernán Camilo García Pérez <hernancgarcia3@gmail.com>",
+  "contributors": [
+    "Juan Carlos Jiménez Gutiérrez <jangojes.dev@gmail.com>"
+],
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch index.js"
+    "dev": "node --watch ./src/index.js"
   },
   "dependencies": {
     "express": "^5.1.0"
