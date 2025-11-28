@@ -1,5 +1,5 @@
 //Importando la dependencia 'express' usando CommonJS
-const express = require ('express');
+import express from 'express';
 const router = express.Router();
 
 //Definición de las rutas (EndPoints)
@@ -22,4 +22,4 @@ router.delete(  "/", (req, res) => {
 
 
 //Exportando el router usando el CommonJS
-module.exports = router;
+export default router;

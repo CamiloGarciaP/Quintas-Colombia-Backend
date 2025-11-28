@@ -1,5 +1,8 @@
-const express = require( 'express' );         //Esto es una importación
-const dbConnection = require( './config/mongo.config.js' );
+import express from 'express';     //Esto es una importación
+
+import dbConnection from './config/mongo.config.js';
+import usersRoute from './routes/users.route.js';
+import productsRoute from './routes/products.route.js';
 
 const app = express();                        // Invocando core Express
 const PORT = 3000;                            // Definiendo el puerto de escucha
@@ -11,10 +14,11 @@ app.get ("/health", (req, res) => {
         msg: 'Welcome Bitches'
     });
 });
-//Middlewares Express
 
-app.use( '/api/v1/users', require( './routes/users.route.js') );
-app.use( '/api/v1/products', require( './routes/products.route.js') );
+//Middlewares Express
+app.use( '/api/v1/users', usersRoute );
+app.use( '/api/v1/products', productsRoute );
+
 
 // Lanzando el servidor web usando Express
 app.listen( PORT, () => {

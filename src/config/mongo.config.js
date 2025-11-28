@@ -1,5 +1,5 @@
 //Mongooes ODM,ORM
-const mongoose =require( 'mongoose' );
+import mongoose from 'mongoose';
 
 const MONGO_URI = 'mongodb://localhost:27017/db-quintas-colombia';
 
@@ -14,5 +14,4 @@ const dbConnection = async () => {
         console.error('Error al iniciar la base de datos :( ')
     }
 }
-
-module.exports = dbConnection; 
+export default dbConnection; 
