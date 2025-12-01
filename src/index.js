@@ -11,11 +11,12 @@ dbConnection();                               // Ejecuta la conexión a la base 
 app.get ("/health", (req, res) => {
     res.json({
         path: '/health',
-        msg: 'Welcome Bitches'
+        msg: 'Welcome to Quintas Colombia'
     });
 });
 
 //Middlewares Express
+app.use( express.json ());      //Middlewares para parsear JSON.
 app.use( '/api/v1/users', usersRoute );
 app.use( '/api/v1/products', productsRoute );
 
