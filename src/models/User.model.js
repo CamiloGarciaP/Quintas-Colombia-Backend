@@ -49,11 +49,19 @@ const userSchema = new Schema({
         type: Boolean,          //true or false
         default: true 
     },
+    // createDate: {
+        //Reglas
+    //     type: date,          
+    //     default: new Date().now
+    // },
     // code: {
     //     type: String,        //Código de verificación
     //     trim: true
     // }
-},{});
+},{
+    versionKey: false,          //Elimina el versionamiento de la estructura
+    timestamps: true            //Habilita los campos createAt, updatedAt
+});
 
 //Crear el modelo User basado en el esquema userSchema
 const userModel = model ( 
