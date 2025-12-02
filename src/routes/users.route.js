@@ -1,5 +1,6 @@
 //Importando la dependencia 'express' usando CommonJS
 import express from 'express';
+import userModel from '../models/User.model.js';
 const router = express.Router();
 
 //Definición de las rutas (EndPoints)
@@ -16,14 +17,20 @@ const router = express.Router();
 //     res.json({msg: 'Elimina un usuario'});
 // }  );
 
-router.post(  "/", (req, res) => {
+router.post(  "/", async (req, res) => {
     const data = req.body;          //Extraer el cuerpo de la petición.
+
+    //Registra los datos usando el userModel
+    const dataRegistered = await userModel.create( data );      //Registrar los datos en la base de datos.
+
     res.json({
         msg: 'crea un usuario',
         // data: data              //ECMAScript versión antigua
-        data                       //ECMAScript versión nueva. Si la propiedad y el valor usa el mismo nombre el lo lee! 
+        dataRegistered                       //ECMAScript versión nueva. Si la propiedad y el valor usa el mismo nombre el lo lee! 
     });
 }  );
+
+
 
 
 
