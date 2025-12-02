@@ -9,14 +9,9 @@ const userSchema = new Schema({
         //Modificadores
         trim: true              //Elimina los espacios en blanco(Principio y Final)
     },
-    email: {
-        //Reglas
+    lastname: {
         type: String,           //Es de tipo String(texto)
-        required: true,         //Es obligatorio
-        //Modificadores
-        trim: true,             //Elimina los espacios en blanco(Principio y Final)
-        lowercase: true,        //Hace que todo sea en miniscula
-        unique: true,           //Solo deja registrar un solo correo
+        trim: true              //Elimina los espacios en blanco(Principio y Final)
     },
     username:{
         //Reglas
@@ -26,6 +21,15 @@ const userSchema = new Schema({
         trim: true,             //Elimina los espacios en blanco (Principio y Final)
         unique: true,           //Debe ser único
     },
+    email: {
+        //Reglas
+        type: String,           //Es de tipo String(texto)
+        required: true,         //Es obligatorio
+        //Modificadores
+        trim: true,             //Elimina los espacios en blanco(Principio y Final)
+        lowercase: true,        //Hace que todo sea en miniscula
+        unique: true,           //Solo deja registrar un solo correo
+    },
     password: {
         //Reglas
         type: String,           //Es de tipo String(texto)
@@ -34,15 +38,18 @@ const userSchema = new Schema({
         trim: true,             //Elimina los espacios en blanco (Principio y Final)
         unique: true,           //Debe ser único
         minLength: 8,           //Mínima longitud
-        masLength: 12,          //Máxima longitud
+        maxLength: 12,          //Máxima longitud
+    },
+    phone: {
+        type: String
     },
     role: {
         //Reglas
         type: String,           //Es de tipo String(texto)
         required: true,         //Es obligatorio
         //Modificadores
-        enum:[ 'super-admin', 'admin', 'editor', 'author', 'contributor', 'viewer', 'registered'], 
-        default: 'registered',
+        enum:[ "Cliente", "Propietario","Admin"], 
+        default: 'Cliente',
     },
     isActive: {
         //Reglas
