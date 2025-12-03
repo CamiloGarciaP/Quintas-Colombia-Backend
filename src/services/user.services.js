@@ -13,9 +13,13 @@ const dbGetUserById = async ( _id ) => {
     return await userModel.findOne({ _id });
 }
 
+const dbDelteUserById = async ( _id ) => {
+    return await userModel.findOneAndDelete({ _id });
+}
 
 export{
     dbRegisterUser,
     dbGetAllUsers,
-    dbGetUserById
+    dbGetUserById,
+    dbDelteUserById
 }

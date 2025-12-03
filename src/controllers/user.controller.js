@@ -1,6 +1,6 @@
 //Controlador: Se debe encargar de Recibir las peticiones y responder a ellas.
 import userModel from "../models/User.model.js";
-import { dbGetAllUsers, dbGetUserById, dbRegisterUser } from "../services/user.services.js";
+import { dbDelteUserById, dbGetAllUsers, dbGetUserById, dbRegisterUser } from "../services/user.services.js";
 
 const createUser = async (req, res) => {
 
@@ -42,10 +42,9 @@ const getAllUsers = async (req, res) => {
     }
 }
 
-const getUserById = async ( req, res ) => {
+const getUserById = async (req, res ) => {
     try {
         const idUser = req.params.idUser;
-    
         const user = await dbGetUserById(idUser);
     
         res.json({
@@ -60,8 +59,26 @@ const getUserById = async ( req, res ) => {
     }
 }
 
+const deleteUserById = async (req, res) => {
+    
+    try {
+        const idUser = req.params.idUser;
+        const userDeleted = await dbDelteUserById(idUser);
+        res.json({
+            userDeleted
+        })
+    } 
+    catch (error) {
+        console.error(error);
+        res.json({
+            msg: 'Error: No se pudo eliminar el usuario por ID'
+        });
+    }
+}
+
 export {
     createUser,
     getAllUsers,
-    getUserById
+    getUserById,
+    deleteUserById
 }
