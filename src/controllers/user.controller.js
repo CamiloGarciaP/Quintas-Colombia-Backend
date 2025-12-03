@@ -76,9 +76,40 @@ const deleteUserById = async (req, res) => {
     }
 }
 
+const updateUserById = async (req, res) => {
+    try {
+        const inputData = req.body;
+        const idUser = req.params.idUser;
+    
+        const userUpdated = await userModel.findByIdAndUpdate(
+            idUser,     //ID
+            inputData,   //Datos a actualizar
+            {new: true}//Configuración
+        );
+    
+        // const userUpdated = await userModel.findOneAndUpdate(
+        //     { _id: idUser},//ID
+        //     inputData  //Datos a actualizar
+        //     {new: true}   //Configuración
+        // );
+    
+        res.json({
+            userUpdated
+        });
+        
+    } 
+    catch (error) {
+        console.error(error);
+        res.json({
+            msg: 'Error: No pudo actualizar el usuario por ID'
+        });
+    }
+}
+
 export {
     createUser,
     getAllUsers,
     getUserById,
-    deleteUserById
+    deleteUserById,
+    updateUserById
 }
