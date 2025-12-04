@@ -2,7 +2,7 @@ import express from 'express';     //Esto es una importación
 
 import dbConnection from './config/mongo.config.js';
 import usersRoute from './routes/users.route.js';
-import productsRoute from './routes/products.route.js';
+import realStateRoute from './routes/realState.route.js';
 
 const app = express();                        // Invocando core Express
 const PORT = 3000;                            // Definiendo el puerto de escucha
@@ -18,7 +18,7 @@ app.get ("/health", (req, res) => {
 //Middlewares Express
 app.use( express.json ());      //Middlewares para parsear JSON.
 app.use( '/api/v1/users', usersRoute );
-app.use( '/api/v1/products', productsRoute );
+app.use( '/api/v1/real-state', realStateRoute );
 
 
 // Lanzando el servidor web usando Express

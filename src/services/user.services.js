@@ -1,3 +1,4 @@
+import { updateUserById } from "../controllers/user.controller.js";
 import userModel from "../models/User.model.js"
 
 //Servicio: Se debe encargar solo de la comunicación directa con la base de datos.
@@ -15,6 +16,14 @@ const dbGetUserById = async ( _id ) => {
 
 const dbDelteUserById = async ( _id ) => {
     return await userModel.findOneAndDelete({ _id });
+}
+
+const dbUpdateUserById = async ( _id, updateData ) => {
+    return await userModel.findByIdAndUpdate(
+        _id,
+        updateData,
+        {new:true  }
+    );
 }
 
 export{

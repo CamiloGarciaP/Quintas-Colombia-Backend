@@ -7,16 +7,15 @@ const createUser = async (req, res) => {
     //Se controla la excepción que ocurre en el Paso 2.(Try/cath)
     try {
         //Paso 1: Extraer el cuerpo de la petición.
-        const data = req.body;          
+        const inputData = req.body;          
     
         //Paso 2: Registra los datos usando el userModel
-        const dataRegistered = await dbRegisterUser (data);     //Registrar los datos en la base de datos.
+        const userRegistered = await dbRegisterUser (inputData);     //Registrar los datos en la base de datos.
     
         //Paso 3: Responder al cliente.
         res.json({
-            msg: 'crea un usuario',
             // data: data                        //ECMAScript versión antigua
-            dataRegistered                       //ECMAScript versión nueva. Si la propiedad y el valor usa el mismo nombre el lo lee! 
+            userRegistered                       //ECMAScript versión nueva. Si la propiedad y el valor usa el mismo nombre el lo lee! 
         });
     } catch (error) {
         //Paso 3: Se responde al cliente cuando se produce una excepción.
@@ -32,7 +31,6 @@ const getAllUsers = async (req, res) => {
         const users = await dbGetAllUsers();
 
     res.json({
-        msg: 'Obtiene todos los usuarios',
         users
     });
     } 
@@ -45,10 +43,10 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res ) => {
     try {
         const idUser = req.params.idUser;
-        const user = await dbGetUserById(idUser);
+        const userFound = await dbGetUserById(idUser);
     
         res.json({
-            user
+            userFound
         });
     }
     catch (error) {
