@@ -1,41 +1,110 @@
 import { Schema, model } from "mongoose";
 
 const realStateSchema = new Schema({
-    nameProperty: {
+    owner:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+        // index:true
+    },
+    nameProperty:{
         type: String,
         required: true,
         trim: true
     },
-    address: {
+    description:{
         type: String,
         required: true,
         trim: true
     },
-    city:{
+    propertyType:{
         type: String,
-        required: true,
-        trim: true
+        enum: ['Finca', 'Casa', 'Apartamento', 'Cabaña', 'Otra'],
+        default: 'Finca'
     },
-    ability: {
-        habs: { 
-            type: Number, 
-            default: 0 
-        },
-        baths: { 
-            type: Number, 
-            default: 0 
-        },
-    },
-    pricePerNight:{
+    maxGuests:{
         type: Number,
         required: true,
         min: 0
+    },
+
+    bedrooms:{
+        type: Number,
+        required: true,
+        min: 0
+    },
+    beds:{
+        type: Number,
+        required: true,
+        min: 0
+    },
+    bathrooms:{
+        type: Number,
+        required: true,
+        min: 0
+    },
+    location:{      
+        state: String,
+        city: String,
+        address: String,
+        reference: String,
+        coordinates:{
+            lat:Number,     //Consultar al profe la posición de esta llave.
+            lng:Number
+        }
+    },
+    pricing: {
+        pricePerNight:{
+            type:Number,
+            required: true,
+            min:0
+        },
+        currency:{
+            type:String,
+            default:'COP',
+        },
+        cleaningFee:{
+            type:Number,
+            default:0
+        },
+        minimunNights:{
+            type:Number,
+            default:1
+        }
+    },
+    amenities: {
+        type: String,
+        enum: [
+        'piscina',
+        'BBQ',
+        'WiFi',
+        'parqueadero privado',
+        'cocina',
+        'Pet Friendly',
+        'zona de ropas',
+        'equipo de sonido',
+        'aire acondicionado',
+        'TV',
+        'otras',
+        ]
+    },
+    houseRules: {
+        type:String,
+        trim: true
+    },
+    photos:{
+        url: String,
+        description:String
+    },
+    isPublished:{
+        type: Boolean,
+        default: false,
+        // index:true
     },
     isActive:{
         type: Boolean,
         default:true
     }
-
 },{
     versionKey: false,
     timestamps: true

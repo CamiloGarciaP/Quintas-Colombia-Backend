@@ -1,39 +1,58 @@
 import { Schema, model } from "mongoose";
 
 const bookingSchema = new Schema({
-    realStateId:{
+    property:{
         type: Schema.Types.ObjectId,
-        ref: 'real-state',
-        required: false,
-    },
-    clienteId:{
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-        required: false,
-    },
-    startDate:{
-        type:Date,
+        ref:'Property',
         required: true,
+        // index: true
     },
-    endDate:{
-        type:Date,
+    guest:{
+        type:Schema.Types.ObjectId,
+        ref:'User',
         required: true,
+        // index: true
     },
-    guests:{
-        type:Number,
-        min:1,
-        required: true,
+    // owner: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true,
+    //     index: true,
+    // },
+    checkIn:{
+        tipe: Date,
+        required: true
     },
-    nightPrice:{
+    checkOut:{
+        tipe: Date,
+        required: true
+    },
+    guestCount:{
         type: Number,
         required: true,
-        min: 0
+        min: 1,
     },
     status:{
-        type:String,
-        enum:[ "Pendiente", "Confirmada","Cancelada","Completada"], 
+        type: String,
+        enum:[ 'Pendiente', 'Confirmada', 'Cancelada' ],
         default: 'Pendiente',
+        // index: true
+    },
+    totalPrice:{
+        type:Number,
+        required: true,
+        min:0
+    },
+    paymentStatus:{
+        type:String,
+        enum:[ 'No Pago', 'Pago', 'Devolución' ],
+        default: 'No Pago'
+    },
+    notes:{
+        type:String,
+        trim:true
     }
+
 }, {
     versionKey: false,
     timetamps: true

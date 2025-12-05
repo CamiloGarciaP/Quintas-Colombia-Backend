@@ -2,15 +2,11 @@ import { Schema, model } from 'mongoose';
 
 //Creando una instancia del esquema de entidad User
 const userSchema = new Schema({
-    name: {
+    fullName: {
         //Reglas
         type: String,           //Es de tipo String(texto)
         required: true,         //Es obligatorio
         //Modificadores
-        trim: true              //Elimina los espacios en blanco(Principio y Final)
-    },
-    lastname: {
-        type: String,           //Es de tipo String(texto)
         trim: true              //Elimina los espacios en blanco(Principio y Final)
     },
     username:{
@@ -40,7 +36,8 @@ const userSchema = new Schema({
         maxLength: 12,          //Máxima longitud
     },
     phone: {
-        type: String
+        type: String,
+        trim: true
     },
     role: {
         //Reglas
