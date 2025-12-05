@@ -8,16 +8,34 @@ const realStateSchema = new Schema({
     },
     address: {
         type: String,
+        required: true,
         trim: true
     },
     city:{
         type: String,
+        required: true,
         trim: true
     },
-    ability:[{
-        habs: Number,
-        baths: Number,
-    }],   
+    ability: {
+        habs: { 
+            type: Number, 
+            default: 0 
+        },
+        baths: { 
+            type: Number, 
+            default: 0 
+        },
+    },
+    pricePerNight:{
+        type: Number,
+        required: true,
+        min: 0
+    },
+    isActive:{
+        type: Boolean,
+        default:true
+    }
+
 },{
     versionKey: false,
     timestamps: true
@@ -26,7 +44,7 @@ const realStateSchema = new Schema({
 
 
 const realStateModel = model(
-    'Real-State',
+    'real-state',
     realStateSchema
 );
 

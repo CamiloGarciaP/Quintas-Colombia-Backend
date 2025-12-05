@@ -36,7 +36,6 @@ const userSchema = new Schema({
         required: true,         //Es obligatorio
         //Modificadores
         trim: true,             //Elimina los espacios en blanco (Principio y Final)
-        unique: true,           //Debe ser único
         minLength: 8,           //Mínima longitud
         maxLength: 12,          //Máxima longitud
     },
