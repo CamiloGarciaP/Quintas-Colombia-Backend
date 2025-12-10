@@ -20,11 +20,11 @@ const bookingSchema = new Schema({
     //     index: true,
     // },
     checkIn:{
-        tipe: Date,
+        type: Date,
         required: true
     },
     checkOut:{
-        tipe: Date,
+        type: Date,
         required: true
     },
     guestCount:{
@@ -55,7 +55,7 @@ const bookingSchema = new Schema({
 
 }, {
     versionKey: false,
-    timetamps: true
+    timestamps: true
 });
 
 

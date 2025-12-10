@@ -30,5 +30,6 @@ export{
     dbRegisterUser,
     dbGetAllUsers,
     dbGetUserById,
-    dbDelteUserById
+    dbDelteUserById,
+    dbUpdateUserById
 }

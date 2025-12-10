@@ -18,7 +18,7 @@ const dbDeleteRealStatesById = async (_id) => {
 
 const dbUpdateRealStateById = async ( _id, updateData ) => {
     return await realStateModel.findByIdAndUpdate(
-        id,
+        _id,
         updateData,
         {new: true}
     );
