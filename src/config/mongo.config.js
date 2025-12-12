@@ -1,7 +1,7 @@
 //Mongooes ODM,ORM
 import mongoose from 'mongoose';
 
-const MONGO_URI = 'mongodb://localhost:27017/db-quintas-colombia';
+const MONGO_URI = 'mongodb+srv://Camilo_Garcia:cebTrwKCQhCzkkJh@cluster0.p4axki7.mongodb.net/db-quintas-colombia';
 
 const dbConnection = async () => {
     try {

@@ -1,17 +1,17 @@
 import { Schema, model } from 'mongoose';
 
 const reviewSchema = new Schema({
+    booking:{
+        type: Schema.Types.ObjectId,
+        ref: 'Booking',
+        required: true,
+        // index: true
+    },
     property:{
         type: Schema.Types.ObjectId,
         ref: 'Property',
         required: true,
         // index: true,
-    },
-    user:{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-        // index: true
     },
     rating:{
         type: Number,
@@ -19,22 +19,20 @@ const reviewSchema = new Schema({
         min: 1,
         max: 5
     },
-    // TODO: Definir un entidad separada para comentarios tipo foro.
-    // comment:{
-    //     type: String,
-    //     trim: true,
-    //     maxlength: 1500,
-    // },
-    // ownerReply: {
-    //     message:{
-    //         type: String,
-    //         trim: true,
-    //     },
-    //     repliedAt: Date
-    // },
-    booking:{
-        type: Schema.Types.ObjectId
-    }
+    //Hilo estilo foro dentro de la review
+    thread:[{
+        // MongoDB generará un ID automaticamente para cada comentario
+        _id: {
+            type:Schema.Types.ObjectId,
+            auto:true
+        },
+        // Se registra el ID del usuario autenticado (cliente o dueño).
+        sender: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+        },
+    }],
 }, {
     versionKey: false,      //Elimina el versionamiento de la estructura
     timestamps: true        //Habilita los campos createAt, updatedAt
