@@ -4,7 +4,7 @@ import { createUser, deleteUserById, getAllUsers, getUserById, updateUserById } 
 const router = express.Router();
 
 //Definición de las rutas (EndPoints)
-router.post(  "/", createUser  );
+router.post(  "/", createUser  ); //Registro privado de usuario.
 router.get(  "/", getAllUsers );
 router.get( "/:idUser", getUserById ); //Parametrizar la ruta: Crear un parametro en la ruta que funje como variable.
 router.delete( "/:idUser", deleteUserById);

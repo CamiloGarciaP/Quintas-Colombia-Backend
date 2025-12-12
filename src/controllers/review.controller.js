@@ -1,5 +1,5 @@
 import reviewModel from "../models/review.model.js";
-import{ dbDelteReviewById, dbGetALlReview, dbGetReviewById, dbRegisterReview } from "../services/review.services.js";
+import{ dbDelteReviewById, dbGetALlReview, dbGetReviewById, dbRegisterReview, dbUpdateReviewById } from "../services/review.services.js";
 
 const createReview = async (req, res) => {
     try {
@@ -58,15 +58,10 @@ const deleteReviewById = async (req, res) => {
 }
 const updateReviewById = async (req, res) => {
     try {
-        const inputData = req.body;
+        const {thread} = req.body;
         const idReview = req.params.idReview;
 
-        const reviewUpdate = await reviewModel.findByIdAndUpdate(
-            idReview,
-            inputData,
-            {new: true}
-        );
-
+        const reviewUpdate = await dbUpdateReviewById(idReview, {thread});
         res.json({
             reviewUpdate
         });

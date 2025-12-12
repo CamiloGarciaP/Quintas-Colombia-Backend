@@ -32,6 +32,11 @@ const reviewSchema = new Schema({
             ref: 'User',
             required: true
         },
+        comment:{
+            type: String,
+            required:true,
+            trim: true
+        }
     }],
 }, {
     versionKey: false,      //Elimina el versionamiento de la estructura

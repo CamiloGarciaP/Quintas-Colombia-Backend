@@ -4,7 +4,8 @@ import dbConnection from './config/mongo.config.js';
 import usersRoute from './routes/users.route.js';
 import realStateRoute from './routes/realState.route.js';
 import bookingRoute from './routes/booking.route.js';
-import reviewRoute from './routes/review.route.js'
+import reviewRoute from './routes/review.route.js';
+import authRoute from './routes/auth.route.js'
 
 const app = express();                        // Invocando core Express
 const PORT = 3000;                            // Definiendo el puerto de escucha
@@ -19,6 +20,7 @@ app.get ("/health", (req, res) => {
 
 //Middlewares Express
 app.use( express.json ());      //Middlewares para parsear JSON.
+app.use( '/api/v1/auth', authRoute );
 app.use( '/api/v1/users', usersRoute );
 app.use( '/api/v1/real-state', realStateRoute );
 app.use( '/api/v1/booking', bookingRoute );
