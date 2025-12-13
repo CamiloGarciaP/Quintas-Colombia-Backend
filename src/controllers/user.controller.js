@@ -14,7 +14,7 @@ const createUser = async (req, res) => {
 
         if (userFound) {
             return res.json ({
-                msg: 'El usuario ya ese encuentra registradp. Por favor ingrese al sistema'
+                msg: 'El usuario ya ese encuentra registrado. Por favor ingrese al sistema'
             });
         }
 

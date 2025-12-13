@@ -12,6 +12,14 @@ const encryptPassword = ( password ) => {
     return hashPaswoord
 }
 
+const validatePassword = ( originalPassword, hashPaswoord ) => {
+    return bcrypt.compareSync( 
+        originalPassword,       //Contraseña  original 
+        hashPaswoord            //Contraseña encriptada ( viene de la base de datos )
+    );
+}
+
 export {
-    encryptPassword
+    encryptPassword,
+    validatePassword
 };
