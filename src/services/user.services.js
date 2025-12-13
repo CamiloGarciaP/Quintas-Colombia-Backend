@@ -26,10 +26,15 @@ const dbUpdateUserById = async ( _id, updateData ) => {
     );
 }
 
+const dbGetUserByEmail = async ( email ) => {
+    return await userModel.findOne( {email} );
+}
+
 export{
     dbRegisterUser,
     dbGetAllUsers,
     dbGetUserById,
     dbDelteUserById,
-    dbUpdateUserById
+    dbUpdateUserById,
+    dbGetUserByEmail
 }

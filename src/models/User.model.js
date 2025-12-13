@@ -33,7 +33,6 @@ const userSchema = new Schema({
         //Modificadores
         trim: true,             //Elimina los espacios en blanco (Principio y Final)
         minLength: 8,           //Mínima longitud
-        maxLength: 12,          //Máxima longitud
     },
     phone: {
         type: String,

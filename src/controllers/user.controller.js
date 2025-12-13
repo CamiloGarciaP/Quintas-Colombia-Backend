@@ -1,21 +1,37 @@
 //Controlador: Se debe encargar de Recibir las peticiones y responder a ellas.
+import { encryptPassword } from "../helpers/bcrypt.helper.js";
 import userModel from "../models/User.model.js";
-import { dbDelteUserById, dbGetAllUsers, dbGetUserById, dbRegisterUser } from "../services/user.services.js";
+import { dbDelteUserById, dbGetAllUsers, dbGetUserByEmail, dbGetUserById, dbRegisterUser } from "../services/user.services.js";
 
 const createUser = async (req, res) => {
 
     //Se controla la excepción que ocurre en el Paso 2.(Try/cath)
     try {
         //Paso 1: Extraer el cuerpo de la petición.
-        const inputData = req.body;          
+        const inputData = req.body;       
+        //Paso 2: Validar si el usuario ya existe
+        const userFound = await dbGetUserByEmail ( inputData.email );
+
+        if (userFound) {
+            return res.json ({
+                msg: 'El usuario ya ese encuentra registradp. Por favor ingrese al sistema'
+            });
+        }
+
+        //Paso 3: Hashear la contraseña
+        inputData.password = encryptPassword( inputData.password );
     
-        //Paso 2: Registra los datos usando el userModel
+        //Paso 4: Registra los datos usando el userModel
         const userRegistered = await dbRegisterUser (inputData);     //Registrar los datos en la base de datos.
+
+        //Paso 5: Eliminar la contraseña del objeto userRegistered antes de envialro al cliente.
+        const jsonUserFound = userRegistered.toObject();
+        delete jsonUserFound.password;
     
-        //Paso 3: Responder al cliente.
+        //Paso 6: Responder al cliente.
         res.json({
             // data: data                        //ECMAScript versión antigua
-            userRegistered                       //ECMAScript versión nueva. Si la propiedad y el valor usa el mismo nombre el lo lee! 
+            user: jsonUserFound                   //ECMAScript versión nueva. Si la propiedad y el valor usa el mismo nombre el lo lee! 
         });
     } catch (error) {
         //Paso 3: Se responde al cliente cuando se produce una excepción.
