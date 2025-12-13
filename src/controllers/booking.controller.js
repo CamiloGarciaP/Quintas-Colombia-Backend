@@ -5,6 +5,9 @@ import{ dbCreateBooking, dbDeleteBookingById, dbGetAllBooking, dbGetBookingById 
 const createBooking = async (req, res) =>{
     try {
         const inputData = req.body;
+        const user_id = req.payload.id;
+
+        inputData.guest = user_id
 
         const dataRegistered = await  dbCreateBooking(inputData);
         res.json ({

@@ -4,6 +4,9 @@ import { dbCreateRealState, dbDeleteRealStatesById, dbGetAllRealStates, dbGetRea
 const createRealState = async (req, res) => {
     try {
         const inputData = req.body;
+        const user_id = req.payload.id;     //Extraer el id del usuario desde el paylod ( viene del middleware de autenticacion )
+
+        inputData.owner = user_id           //Asignar el id del usuario autenticada como propietario de la propiedad.
     
         const dataRegistered = await dbCreateRealState (inputData);
     

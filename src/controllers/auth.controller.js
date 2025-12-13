@@ -1,5 +1,5 @@
 import { validatePassword } from "../helpers/bcrypt.helper.js";
-import { generateToken } from "../helpers/jwt.helper.js";
+import { generateToken, validateToken } from "../helpers/jwt.helper.js";
 import { dbGetUserByEmail } from "../services/user.services.js";
 
 const loginUser = async (req, res) => {
@@ -48,10 +48,32 @@ const loginUser = async (req, res) => {
 
 
 }
-    const reNewToken = (req, res) => {
+    const reNewToken = async (req, res) => {
+
+        //Obtener el payload del req
+        const payload = req.payload;
+
+        //Paso 2: Verificar si el usuario en el payload esta registrado en la base de datos.
+        const userFound = await dbGetUserByEmail( payload.email );
+        
+        //Paso 3: Elimina las propiedades password del objeto userFound
+        const jsonUserFound = userFound.toObject();         //Convertir el documento BJSON a un JSON
+        delete jsonUserFound.password;                      //Elimina la propiedad password
+
+        //Paso 4: Generar un token nuevo.
+        const newPayload ={
+            id: userFound._id,
+            name: userFound.name._id,
+            email: userFound.email,
+            role: userFound.role
+        };
+        const newToken = generateToken( newPayload );
+
+        //Paso 5: Responder al cliente enviando 
         res.json({
-        msg:"Renovar Token"
-    });
+            token: newToken,                //el token nuevo
+            user: jsonUserFound             //la información del usuario
+        });
 }
 
 export{

@@ -1,13 +1,15 @@
 import express from 'express';
 import { createRealState, deleteRealStatesById, getAllRealStates, getRealStatesById, updateRealStateById } from '../controllers/realState.controller.js';
+import { authenticationUser } from '../middlewares/authentication.middleware.js';
+import { authorizationUser } from '../middlewares/authorization.middlewares.js';
 
 const router =  express.Router();
 
-router.post ( "/", createRealState);
-router.get ( "/", getAllRealStates);
-router.get ( "/:idRealState", getRealStatesById);
-router.delete ( "/:idRealState", deleteRealStatesById);
-router.patch ( "/:idRealState", updateRealStateById)
+router.post ( "/",[authenticationUser, authorizationUser], createRealState);
+router.get ( "/",[authenticationUser, authorizationUser], getAllRealStates);
+router.get ( "/:idRealState",[authenticationUser, authorizationUser], getRealStatesById);
+router.delete ( "/:idRealState",[authenticationUser, authorizationUser], deleteRealStatesById);
+router.patch ( "/:idRealState",[authenticationUser, authorizationUser], updateRealStateById)
 
 
 export default router;

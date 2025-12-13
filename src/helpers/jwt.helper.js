@@ -8,7 +8,20 @@ const generateToken = ( payload ) => {
     );
 }
 
+const validateToken = (token) => {
+    try {
+        const payload = jwt.verify(
+            token,                  //Token que se desea verificar.
+            'rxtcfvgbhjn');         //Semilla o clave secreta: Cadena de texto que sirve para firmar el token.
+            return payload
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
 
 export{
-    generateToken
+    generateToken,
+    validateToken
 }
