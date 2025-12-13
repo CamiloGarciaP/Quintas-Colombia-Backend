@@ -8,7 +8,7 @@ import reviewRoute from './routes/review.route.js';
 import authRoute from './routes/auth.route.js'
 
 const app = express();                        // Invocando core Express
-const PORT = 3000;                            // Definiendo el puerto de escucha
+const PORT = process.env.PORT || 3001;                  // Definiendo el puerto de escucha
 dbConnection();                               // Ejecuta la conexión a la base de datos
 
 app.get ("/health", (req, res) => {

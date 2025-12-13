@@ -3,13 +3,13 @@ import { Schema, model } from "mongoose";
 const bookingSchema = new Schema({
     property:{
         type: Schema.Types.ObjectId,
-        ref:'Property',
+        ref:'real-state',
         required: true,
         // index: true
     },
     guest:{
         type:Schema.Types.ObjectId,
-        ref:'User',
+        ref:'users',
         required: true,
         // index: true
     },

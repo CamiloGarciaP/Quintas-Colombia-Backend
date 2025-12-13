@@ -5,7 +5,7 @@ const dbCreateBooking = async (newBooking) => {
     return await bookingModel.create(newBooking);
 }
 const dbGetAllBooking = async () => {
-    return await bookingModel.find();
+    return await bookingModel.find().populate(['property','guest']);
 }
 const dbGetBookingById = async (_id) =>{
     return await bookingModel.findOne({_id})

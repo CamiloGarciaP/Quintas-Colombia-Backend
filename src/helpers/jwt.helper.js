@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 
-const generateToken = ( payload ) => {
+const generateToken = (payload) => {
     return jwt.sign(
         payload,            //Payload
-        'rxtcfvgbhjn',      //Semilla
+        process.env.JWT_SEED,      //Semilla
         { expiresIn: '1h' }//Configuracion 
     );
 }
@@ -12,8 +12,8 @@ const validateToken = (token) => {
     try {
         const payload = jwt.verify(
             token,                  //Token que se desea verificar.
-            'rxtcfvgbhjn');         //Semilla o clave secreta: Cadena de texto que sirve para firmar el token.
-            return payload
+            process.env.JWT_SEED);         //Semilla o clave secreta: Cadena de texto que sirve para firmar el token.
+        return payload
     } catch (error) {
         console.error(error);
         return null;
@@ -21,7 +21,7 @@ const validateToken = (token) => {
 }
 
 
-export{
+export {
     generateToken,
     validateToken
 }
