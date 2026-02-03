@@ -71,5 +71,6 @@ const userModel = model (
     userSchema  //Esquema asociado al modelo
 );
 
+
 //Exportando el modelo User, para que sa usado en otras partes de la aplicación 
 export default userModel;

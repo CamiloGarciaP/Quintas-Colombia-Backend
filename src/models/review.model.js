@@ -24,6 +24,7 @@ const reviewSchema = new Schema({
         // MongoDB generará un ID automaticamente para cada comentario
         _id: {
             type:Schema.Types.ObjectId,
+            ref: 'User',
             auto:true
         },
         // Se registra el ID del usuario autenticado (cliente o dueño).

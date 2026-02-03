@@ -13,7 +13,7 @@ const createUser = async (req, res) => {
         const userFound = await dbGetUserByEmail ( inputData.email );
 
         if (userFound) {
-            return res.json ({
+            return res.status(409).json ({
                 msg: 'El usuario ya ese encuentra registrado. Por favor ingrese al sistema'
             });
         }
@@ -29,15 +29,16 @@ const createUser = async (req, res) => {
         delete jsonUserFound.password;
     
         //Paso 6: Responder al cliente.
-        res.json({
+        res.status(201).json({
             // data: data                        //ECMAScript versión antigua
+            msg: "Usuario creado correctamente",
             user: jsonUserFound                   //ECMAScript versión nueva. Si la propiedad y el valor usa el mismo nombre el lo lee! 
         });
     } catch (error) {
         //Paso 3: Se responde al cliente cuando se produce una excepción.
         console.error(error);
-        res.json({
-            msg: 'Error: No se pudo crear el usuario'
+        res.status(500).json({
+            msg: 'Error interno del servidor.'
         });
     }
 } 
@@ -46,8 +47,8 @@ const getAllUsers = async (req, res) => {
     try {
         const users = await dbGetAllUsers();
 
-    res.json({
-        users
+    res.status(200).json({
+        data: users
     });
     } 
     catch (error) {

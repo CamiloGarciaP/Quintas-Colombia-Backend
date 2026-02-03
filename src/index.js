@@ -1,5 +1,5 @@
 import express from 'express';     //Esto es una importación
-
+import cors from 'cors';
 import dbConnection from './config/mongo.config.js';
 import usersRoute from './routes/users.route.js';
 import realStateRoute from './routes/realState.route.js';
@@ -19,6 +19,7 @@ app.get ("/health", (req, res) => {
 });
 
 //Middlewares Express
+app.use(cors());
 app.use( express.json ());      //Middlewares para parsear JSON.
 app.use( '/api/v1/auth', authRoute );
 app.use( '/api/v1/users', usersRoute );
