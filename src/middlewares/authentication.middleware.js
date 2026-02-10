@@ -14,12 +14,18 @@ const authenticationUser = (req,res,next) => {
         //Paso 3: Validar el token.
         const payload = validateToken(token);
 
+        //Paso 3.1: Verificar que el token sea válido
+        if (!payload) {
+            return res.status(401).json({
+                msg: 'Token inválido o expirado. Inicia sesión nuevamente.'
+            });
+        }
+
         //Paso 4: Eliminar las propiedades no deseades en el payload
         delete payload.iat;
         delete payload.exp;
 
         req.payload = payload;
-
 
     next();
 }

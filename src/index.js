@@ -6,6 +6,7 @@ import realStateRoute from './routes/realState.route.js';
 import bookingRoute from './routes/booking.route.js';
 import reviewRoute from './routes/review.route.js';
 import authRoute from './routes/auth.route.js'
+import roleRequestRoute from './routes/roleRequest.route.js';
 
 const app = express();                        // Invocando core Express
 const PORT = process.env.PORT || 3001;                  // Definiendo el puerto de escucha
@@ -25,7 +26,8 @@ app.use( '/api/v1/auth', authRoute );
 app.use( '/api/v1/users', usersRoute );
 app.use( '/api/v1/real-state', realStateRoute );
 app.use( '/api/v1/booking', bookingRoute );
-app.use( '/api/v1/review', reviewRoute )
+app.use( '/api/v1/review', reviewRoute );
+app.use( '/api/v1/role-requests', roleRequestRoute );
 
 
 // Lanzando el servidor web usando Express

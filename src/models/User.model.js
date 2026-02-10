@@ -40,11 +40,11 @@ const userSchema = new Schema({
     },
     role: {
         //Reglas
-        type: [String],           //Es de tipo String(texto)
+        type: [String],           //Es de tipo [String](Array de texto)
         required: true,         //Es obligatorio
         //Modificadores
         enum:[ "Cliente", "Propietario","Admin"], 
-        default: 'Cliente',
+        default: ['Cliente'],
     },
     isActive: {
         //Reglas
