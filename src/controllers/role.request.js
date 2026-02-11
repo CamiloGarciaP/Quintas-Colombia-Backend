@@ -1,5 +1,6 @@
 import { dbCreateRoleRequest, dbGetAllRoleRequests, dbGetRoleRequestById, dbGetRoleRequestsByUser, dbUpdateRoleRequestById } from '../services/role.request.js';
 import userModel from '../models/User.model.js';
+import { sendApprovalEmail } from '../helpers/email.helper.js';
 
 // El Cliente crea una solicitud para ser Propietario
 const createRoleRequest = async (req, res) => {
@@ -76,11 +77,14 @@ const approveRoleRequest = async (req, res) => {
             { $addToSet: { role: request.requestedRole } }
         );
 
-        // Actualizar el estado de la solicitud
+        // Enviar correo de notificación al usuario
         const updatedRequest = await dbUpdateRoleRequestById(idRequest, {
             status: 'Aprobada',
             reviewedBy: adminId,
         });
+        if (request.user && request.user.email){
+            sendApprovalEmail(request.user.email, request.user.fullName);
+        }
 
         res.json({
             msg: 'Solicitud aprobada. El usuario ahora tiene el rol de Propietario.',

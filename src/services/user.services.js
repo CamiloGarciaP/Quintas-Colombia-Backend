@@ -1,4 +1,3 @@
-import { updateUserById } from "../controllers/user.controller.js";
 import userModel from "../models/User.model.js"
 
 //Servicio: Se debe encargar solo de la comunicación directa con la base de datos.

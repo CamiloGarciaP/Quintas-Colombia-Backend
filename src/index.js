@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';     //Esto es una importación
 import cors from 'cors';
 import dbConnection from './config/mongo.config.js';

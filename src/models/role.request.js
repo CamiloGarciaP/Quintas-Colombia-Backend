@@ -32,7 +32,7 @@ const roleRequestSchema = new Schema({
     },
 },{
     versionKey: false,
-    timestamps: true // Crea createdAt y updatedAt automaticamente
+    timestamps: true 
 })
 
 const roleRequestModel = model('roleRequests', roleRequestSchema);
