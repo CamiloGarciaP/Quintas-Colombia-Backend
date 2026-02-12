@@ -5,6 +5,7 @@ import { authenticationUser } from '../middlewares/authentication.middleware.js'
 import { authorizationUser } from '../middlewares/authorization.middlewares.js';
 import { withOutRole } from '../middlewares/withOutRole.middleware.js';
 
+
 const router = Router ();
 
 //Define las rutas de acceso a la aplicación
