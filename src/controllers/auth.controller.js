@@ -55,6 +55,11 @@ const loginUser = async (req, res) => {
 
         //Paso 2: Verificar si el usuario en el payload esta registrado en la base de datos.
         const userFound = await dbGetUserByEmail( payload.email );
+        if(!userFound){
+            return res.status(401).json({
+                msg: 'Usuario no encontrado. Inicia sesión nuevamente.'
+            });
+        }
         
         //Paso 3: Elimina las propiedades password del objeto userFound
         const jsonUserFound = userFound.toObject();         //Convertir el documento BJSON a un JSON
@@ -63,7 +68,7 @@ const loginUser = async (req, res) => {
         //Paso 4: Generar un token nuevo.
         const newPayload ={
             id: userFound._id,
-            name: userFound.name._id,
+            name: userFound.name,
             email: userFound.email,
             role: userFound.role
         };
@@ -74,6 +79,7 @@ const loginUser = async (req, res) => {
             token: newToken,                //el token nuevo
             user: jsonUserFound             //la información del usuario
         });
+
 }
 
 export{

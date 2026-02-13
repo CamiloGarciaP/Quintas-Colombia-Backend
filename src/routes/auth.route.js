@@ -4,6 +4,7 @@ import { loginUser, reNewToken } from '../controllers/auth.controller.js';
 import { authenticationUser } from '../middlewares/authentication.middleware.js';
 import { authorizationUser } from '../middlewares/authorization.middlewares.js';
 import { withOutRole } from '../middlewares/withOutRole.middleware.js';
+import { ALLOWED_ROLES } from '../config/global.config.js';
 
 
 const router = Router ();
@@ -13,7 +14,7 @@ router.post ( '/login', loginUser );
 router.post ( '/register', withOutRole, createUser ); //Registro público
 router.get ( 
     '/renewtoken',                                  //Ruta para renovar token
-    [authenticationUser, authorizationUser],        //Middlewares de Autenticación y autorización
+    [authenticationUser, authorizationUser(ALLOWED_ROLES)],        //Middlewares de Autenticación y autorización
     reNewToken );                                   //Controlador para renovar el token 
 
 
