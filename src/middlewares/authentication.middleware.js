@@ -47,7 +47,7 @@ const authenticationUser = async (req,res,next) => {
         req.user = userFound;
 
 
-    next();
+        next();
     } catch (error) {
         console.log(error);
         res.status(500).json({
