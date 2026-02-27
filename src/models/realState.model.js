@@ -67,12 +67,12 @@ const realStateSchema = new Schema({
             type:Number,
             default:0
         },
-        minimunNights:{
+        minimumNights:{
             type:Number,
             default:1
         }
     },
-    amenities: {
+    amenities: [{
         type: String,
         enum: [
         'piscina',
@@ -87,15 +87,21 @@ const realStateSchema = new Schema({
         'TV',
         'otras',
         ]
-    },
+    }],
     houseRules: {
         type:String,
         trim: true
     },
-    photos:{
-        url: String,
-        description:String
-    },
+    photos: [{
+        url: {
+            type: String,
+            required: true // Si hay un objeto foto, mínimo debe tener la URL
+        },
+        description: {
+            type: String,
+            trim: true
+        }
+    }],
     isPublished:{
         type: Boolean,
         default: false,
