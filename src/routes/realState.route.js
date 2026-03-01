@@ -6,19 +6,19 @@ import { authorizationUser } from '../middlewares/authorization.middlewares.js';
 const router =  express.Router();
 
 router.post ( "/",
-    // [authenticationUser, authorizationUser], 
+    [authenticationUser, authorizationUser], 
 createRealState);
 router.get ( "/",
-    // [authenticationUser, authorizationUser], 
+    [authenticationUser, authorizationUser], 
 getAllRealStates);
 router.get ( "/:idRealState",
-    // [authenticationUser, authorizationUser], 
+    [authenticationUser, authorizationUser], 
 getRealStatesById);
 router.delete ( "/:idRealState",
-    // [authenticationUser, authorizationUser], 
+    [authenticationUser, authorizationUser], 
 deleteRealStatesById);
 router.patch ( "/:idRealState",
-    // [authenticationUser, authorizationUser], 
+    [authenticationUser, authorizationUser], 
 updateRealStateById)
 
 
