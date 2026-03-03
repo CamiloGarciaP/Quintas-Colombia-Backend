@@ -1,0 +1,52 @@
+info:
+  name: Update Real State
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: http://localhost:3000/api/v1/real-state/69a62986c435296036336793
+  headers:
+    - name: X-Token
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YTYyMjQzNzE5OWRhYjYyNDIyNzA2NyIsImVtYWlsIjoiemluZWRpbmVAY29ycmVvLmNvIiwicm9sZSI6WyJQcm9waWV0YXJpbyIsIkNsaWVudGUiXSwiaWF0IjoxNzcyNDk2MDg4LCJleHAiOjE3NzI0OTk2ODh9.SLSCNrvS7kjCtQH-eQ6i9XHS7W9Z2moKSabsiWibWJY
+  body:
+    type: json
+    data: |-
+      {
+      //     "owner": "69a622437199dab624227067",
+          "nameProperty": "Villa Zinedine",
+          "description": "aesrdfghjhgfd",
+          "propertyType": "Finca",
+          "maxGuests": "10",
+          "bedrooms": "5",
+          "beds": "5",
+          "bathrooms": "5",
+          "location": {
+              "state": "asdfgfds",
+              "city": "SDFGHGFDS",
+              "address": "asdfghjkkjhgfds",
+              "reference": "asdfghjhgfds",
+              "coordinates": {
+                  "lat": "1010",
+                  "lng": "1010"
+              }
+          },
+          "pricing": {
+              "pricePerNight": "10",
+              "currency": "10",
+              "cleaningFee": "10",
+              "minimunNights": "10"
+          },
+          "amenities": "WiFi",
+          "houseRules": "SDFGHJ",
+          // "photos": "SDFG",
+          "isPublished": true,
+          "isActive": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

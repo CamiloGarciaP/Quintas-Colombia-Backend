@@ -2,6 +2,7 @@ import { validateToken } from "../helpers/jwt.helper.js";
 import { dbGetUserById } from "../services/user.services.js";
 
 const authenticationUser = async (req,res,next) => {
+
     try {
          //Paso 1: Extarer el token de la petición
         const token = req.header('X-Token');
@@ -45,7 +46,6 @@ const authenticationUser = async (req,res,next) => {
         //Paso 7: Enviar el payload a travez del objeto Request
         req.payload = payload;
         req.user = userFound;
-
 
         next();
     } catch (error) {

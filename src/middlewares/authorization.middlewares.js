@@ -1,5 +1,6 @@
 const authorizationUser = (allowedRoles = []) => {
     return (req, res, next) => {
+        
     try {
         const { role } = req.payload;
 

@@ -6,12 +6,12 @@ const createRealState = async (req, res) => {
         const inputData = req.body;
         const user_id = req.payload.id;     //Extraer el id del usuario desde el paylod ( viene del middleware de autenticacion )
 
-        inputData.owner = user_id           //Asignar el id del usuario autenticada como propietario de la propiedad.
+        inputData.owner = user_id;          //Asignar el id del usuario autenticado como propietario de la propiedad.
     
         const dataRegistered = await dbCreateRealState (inputData);
     
         res.json({
-            msg:"Crea porpiedad.",
+            msg:"Propiedad creada exitosamente.",
             dataRegistered
         });
     } 

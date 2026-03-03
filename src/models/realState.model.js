@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const realStateSchema = new Schema({
     owner:{
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'users',
         required: true,
         // index:true
     },
@@ -92,16 +92,16 @@ const realStateSchema = new Schema({
         type:String,
         trim: true
     },
-    photos: [{
-        url: {
-            type: String,
-            required: true // Si hay un objeto foto, mínimo debe tener la URL
-        },
-        description: {
-            type: String,
-            trim: true
-        }
-    }],
+    // photos: [{
+    //     url: {
+    //         type: String,
+    //         required: true // Si hay un objeto foto, mínimo debe tener la URL
+    //     },
+    //     description: {
+    //         type: String,
+    //         trim: true
+    //     }
+    // }],
     isPublished:{
         type: Boolean,
         default: false,

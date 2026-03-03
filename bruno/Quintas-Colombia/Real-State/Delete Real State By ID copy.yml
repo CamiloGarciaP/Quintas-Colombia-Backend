@@ -1,0 +1,21 @@
+info:
+  name: Delete Real State By ID copy
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: http://localhost:3000/api/v1/real-state/69a62986c435296036336793
+  headers:
+    - name: X-Token
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YTYyMmM5NzE5OWRhYjYyNDIyNzA2YSIsImVtYWlsIjoibmlsc29uQGNvcnJlby5jbyIsInJvbGUiOlsiQWRtaW4iXSwiaWF0IjoxNzcyNDk3NjU5LCJleHAiOjE3NzI1MDEyNTl9.NmRN4g_vheTxAkWVFy0rJcFaaKeM9PCbL1XPwTLcHH4
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

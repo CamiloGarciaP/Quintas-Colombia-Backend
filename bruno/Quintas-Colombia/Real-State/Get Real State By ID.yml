@@ -1,0 +1,21 @@
+info:
+  name: Get Real State By ID
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: http://localhost:3000/api/v1/real-state/69a62986c435296036336793
+  headers:
+    - name: X-Token
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YTYyMjQzNzE5OWRhYjYyNDIyNzA2NyIsImVtYWlsIjoiemluZWRpbmVAY29ycmVvLmNvIiwicm9sZSI6WyJQcm9waWV0YXJpbyIsIkNsaWVudGUiXSwiaWF0IjoxNzcyNDk2MDg4LCJleHAiOjE3NzI0OTk2ODh9.SLSCNrvS7kjCtQH-eQ6i9XHS7W9Z2moKSabsiWibWJY
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
