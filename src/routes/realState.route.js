@@ -18,7 +18,7 @@ getRealStatesById);
 router.delete ( "/:idRealState",
     [authenticationUser, authorizationUser([ROLES.ADMIN])], 
 deleteRealStatesById);
-router.patch ( "/:idRealState",
+router.put ( "/:idRealState",
     [authenticationUser, authorizationUser([ROLES.PROPIETARIO, ROLES.ADMIN])], 
 updateRealStateById)
 
