@@ -23,6 +23,7 @@ app.get ("/health", (req, res) => {
 //Middlewares Express
 app.use(cors());
 app.use( express.json ());      //Middlewares para parsear JSON.
+app.use( '/uploads', express.static('uploads'));
 app.use( '/api/v1/auth', authRoute );
 app.use( '/api/v1/users', usersRoute );
 app.use( '/api/v1/real-state', realStateRoute );

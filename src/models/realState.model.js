@@ -92,16 +92,16 @@ const realStateSchema = new Schema({
         type:String,
         trim: true
     },
-    // photos: [{
-    //     url: {
-    //         type: String,
-    //         required: true // Si hay un objeto foto, mínimo debe tener la URL
-    //     },
-    //     description: {
-    //         type: String,
-    //         trim: true
-    //     }
-    // }],
+    photos: [{
+        url: {
+            type: String,
+            required: true // Si hay un objeto foto, mínimo debe tener la URL
+        },
+        description: {
+            type: String,
+            trim: true
+        }
+    }],
     isPublished:{
         type: Boolean,
         default: false,
