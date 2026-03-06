@@ -10,6 +10,10 @@ const createRealState = async (req, res) => {
 
         inputData.owner = user_id;          //Asignar el id del usuario autenticado como propietario de la propiedad.
         
+        if (typeof inputData.location === 'string') inputData.location = JSON.parse(inputData.location);
+        if (typeof inputData.pricing === 'string') inputData.pricing = JSON.parse(inputData.pricing);
+        if (typeof inputData.amenities === 'string') inputData.amenities = JSON.parse(inputData.amenities);
+
         if(req.files && req.files.length > 0) {
             inputData.photos = req.files.map(file => {
                 return {
@@ -32,6 +36,7 @@ const createRealState = async (req, res) => {
             msg: 'Error: No se pudo crear propiedad'
         });
     }
+    
 }
 
 const getAllRealStates = async (req,res) => {
@@ -107,6 +112,11 @@ const updateRealStateById = async (req, res) => {
     try {
         const inputData = req.body;
         const idRealState = req.params.idRealState;
+
+        if (typeof inputData.location === 'string') inputData.location = JSON.parse(inputData.location);
+        if (typeof inputData.pricing === 'string') inputData.pricing = JSON.parse(inputData.pricing);
+        if (typeof inputData.amenities === 'string') inputData.amenities = JSON.parse(inputData.amenities);
+
         const existingRealState = await realStateModel.findById(idRealState);
 
         if(!existingRealState) {
@@ -152,6 +162,7 @@ const updateRealStateById = async (req, res) => {
             msg: 'Error: No pudo actualizar la propiedad por ID'
         });
     }
+
 }
 
 export {

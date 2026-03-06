@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
     },
     //2. Nombre del archivo que se va a guardar
     filename: function (req,file, cb) {
-        const uniqueSuffix = Date.now() + '-' + match.round(Math.random() * 1e9);
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
         const ext = path.extname(file.originalname);
         cb(null, 'propiedad-' + uniqueSuffix + ext);
     }
