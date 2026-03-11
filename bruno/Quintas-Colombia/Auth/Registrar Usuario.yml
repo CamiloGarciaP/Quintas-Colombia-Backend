@@ -1,0 +1,26 @@
+info:
+  name: Registrar Usuario
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{BaseURLv1}}/auth/register"
+  body:
+    type: json
+    data: |2-
+       {
+          "fullName": "Pedro juan",
+          "username": "Pablo juan",
+          "email": "pj@correo.co",
+          "password": "1234567890",
+          "phone": "320145879658",
+          "role": "Cliente"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
