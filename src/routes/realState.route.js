@@ -11,10 +11,10 @@ router.post ( "/",
     [authenticationUser, authorizationUser([ROLES.PROPIETARIO, ROLES.ADMIN]), uploadImage.array('images', 10 )], 
 createRealState);
 router.get ( "/",
-    [authenticationUser, authorizationUser([ROLES.CLIENTE, ROLES.PROPIETARIO, ROLES.ADMIN])], 
+    // [authenticationUser, authorizationUser([ROLES.CLIENTE, ROLES.PROPIETARIO, ROLES.ADMIN])], 
 getAllRealStates);
 router.get ( "/:idRealState",
-    [authenticationUser, authorizationUser([ROLES.CLIENTE, ROLES.PROPIETARIO, ROLES.ADMIN])], 
+    // [authenticationUser, authorizationUser([ROLES.CLIENTE, ROLES.PROPIETARIO, ROLES.ADMIN])], 
 getRealStatesById);
 router.delete ( "/:idRealState",
     [authenticationUser, authorizationUser([ROLES.ADMIN])], 
